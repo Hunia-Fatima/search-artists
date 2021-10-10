@@ -7,6 +7,8 @@
     margin-bottom: 20px;
     padding: 15px;
     cursor: pointer;
+    background: $c-white;
+    border: 1px solid $c-gray--lighter;
     &__info {
         display: flex;
         flex-direction: column;

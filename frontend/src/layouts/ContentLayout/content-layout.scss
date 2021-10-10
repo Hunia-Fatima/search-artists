@@ -7,4 +7,15 @@
     flex-direction: column;
     background: $c-background;
     justify-content: center;
+    &__child {
+        margin-top: 7rem;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        flex-grow: 1;
+        @include media("<bp--small") {
+            margin-top: 2rem;   
+        }
+    }
 }

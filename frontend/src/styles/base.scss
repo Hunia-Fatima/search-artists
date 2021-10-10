@@ -1,1 +1,22 @@
-// declare the theme and all primary and secondary colors to be used in app
+// fonts to be used in app
+@mixin fontFamilyGill($weight: bold) {
+    font-family: 'Gill Sans', sans-serif !important;
+    font-weight: $weight !important;
+  }
+
+// colors to be used in app
+$c-background: #F8F5F5;
+$c-black: #343434;
+$c-gray--dark: #585858;
+$c-gray: #929292;
+$c-gray--light: #C2C2C2;
+
+
+// breakpoints in app
+$bp--xxsmall: 400px;
+$bp--xsmall: 475px;
+$bp--small: 650px;
+$bp--medium: 1000px;
+$bp--large: 1200px;
+$bp--xlarge: 1600px;
+$bp--xxlarge: 3200px;

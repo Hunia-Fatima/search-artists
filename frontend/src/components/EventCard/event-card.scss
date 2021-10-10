@@ -1,0 +1,38 @@
+@import "../../styles/base.scss";
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    &__heading {
+        margin: 10px 0;
+        font-size: 16px;
+        @include fontFamilyGill(600);
+        border-bottom: 1px solid $c-gray--light;
+    }
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__section {
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0;
+            width: 50%;
+            align-items: flex-start;
+            p {
+                @include fontFamilyGill(500);
+                margin: 0;
+                color: $c-gray;
+            }
+            &__heading{
+                color: $c-black !important;
+                font-size: 14px;
+            }
+        }
+    }
+}

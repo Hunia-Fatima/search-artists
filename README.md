@@ -1,0 +1,2 @@
+# search-artists
+An assignment.

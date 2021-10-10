@@ -1,1 +1,57 @@
-// declare the theme and all primary and secondary colors to be used in app
+// fonts to be used in app
+@mixin fontFamilyGill($weight: bold) {
+    font-family: 'Gill Sans', sans-serif !important;
+    font-weight: $weight !important;
+  }
+
+// colors to be used in app
+$c-background: #F8F5F5;
+$c-white: #FFFFFD;
+$c-black: #343434;
+$c-gray--dark: #585858;
+$c-gray: #929292;
+$c-gray--light: #C2C2C2;
+$c-gray--lighter: #DFDFDF;
+
+
+// breakpoints in app
+
+$bp--xxsmall: 400px;
+$bp--xsmall: 475px;
+$bp--small: 650px;
+$bp--medium: 1000px;
+$bp--large: 1200px;
+$bp--xlarge: 1600px;
+$bp--xxlarge: 3200px;
+
+@function translate-media-condition($c) {
+  $condMap: (
+    ">bp--xxsmall": "(min-width: #{$bp--xxsmall + 1})",
+    "<bp--xxsmall": "(max-width: #{$bp--xxsmall})",
+    ">bp--xsmall": "(min-width: #{$bp--xsmall + 1})",
+    "<bp--xsmall": "(max-width: #{$bp--xsmall})",
+    ">bp--small": "(min-width: #{$bp--small + 1})",
+    "<bp--small": "(max-width: #{$bp--small})",
+    ">bp--medium": "(min-width: #{$bp--medium + 1})",
+    "<bp--medium": "(max-width: #{$bp--medium})",
+    ">bp--large": "(min-width: #{$bp--large + 1})",
+    "<bp--large": "(max-width: #{$bp--large})",
+    ">bp--xlarge": "(min-width: #{$bp--xlarge + 1})",
+    "<bp--xlarge": "(max-width: #{$bp--xlarge})",
+    "<bp--xxlarge": "(max-width: #{$bp--xxlarge})",
+    ">bp--xxlarge": "(min-width: #{$bp--xxlarge + 1})",
+  );
+  @return map-get( $condMap, $c );
+}
+
+@mixin media($args...) {
+  $query: "";
+  @each $arg in $args {
+    $op: "";
+    @if ( $query != "" ) {
+      $op: " and ";
+    }
+    $query: $query + $op + translate-media-condition($arg);
+  }
+  @media #{$query}  { @content; }
+}

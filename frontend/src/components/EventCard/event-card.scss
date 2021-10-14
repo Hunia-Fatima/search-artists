@@ -17,8 +17,8 @@
     }
     &__row {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        column-gap: 15px;
         &__section {
             display: flex;
             flex-direction: column;

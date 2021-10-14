@@ -9,6 +9,9 @@
     cursor: pointer;
     background: $c-white;
     border: 1px solid $c-gray--lighter;
+    @include media("<bp--small") {
+        width: 90%;
+    }
     &__info {
         display: flex;
         flex-direction: column;
@@ -23,6 +26,7 @@
         &__fb-url {
             font-size: 14px;
             color: $c-gray;
+            word-break: break-all;
         }
     }
     &__image {

@@ -19,12 +19,11 @@ class App extends React.Component {
       <div>
         <Router>
           <Switch>
-            <Route path={`${SEARCH}`}>
-              <SearchPage/>
-            </Route>
-            <Route path={`${ARTIST_DETAIL}`}>
-              <EventsPage/>
-            </Route>
+            <Route path={`${SEARCH}`} component={SearchPage} />
+              {/* <SearchPage/> */}
+            {/* </Route> */}
+            <Route path={`${ARTIST_DETAIL}/:artist_name`} component={EventsPage}/>
+              {/* <EventsPage/> */}
           </Switch>
         </Router>
       </div>

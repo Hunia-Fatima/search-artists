@@ -15,15 +15,18 @@ export default class ArtistCard extends Component {
 
     render() {
         return (
-            <Link className={'artist-card__link'} to={this.props.clickable ? ARTIST_DETAIL: '#'}>
+            this.props.name?
+            <Link className={'artist-card__link'} to={this.props.clickable ? `${ARTIST_DETAIL}/${this.props.name}`: '#'}>
                 <div className='artist-card'>
-                    <image className='artist-card__image' src={WhiteImage} />
+                    <img className='artist-card__image' src={this.props.imageUrl} />
                     <div className='artist-card__info'>
                         <p className='artist-card__info__name'>{this.props.name}</p>
                         <p className='artist-card__info__fb-url'>{this.props.facebookUrl}</p>
                     </div>
                 </div>
-            </Link>
+            </Link>:
+            !this.props.clickable && !this.props.name ? <p>Loading...</p>:
+            <p>No Artist Found Against your Search</p>
         );
     }
 }

@@ -17,28 +17,29 @@ export default class SearchPage extends Component {
         };
     }
 
-    handleSearch = async(text) => {
-        this.setState({artists: [], loading: true})
+    handleSearch = async (text) => {
+        this.setState({ artists: [], loading: true })
         const response = await getArtists(text)
-        this.setState({artists: response.data, statusMsg: response.statusMsg, errMsg: response.errMsg, loading: false})
+        this.setState({ artists: response.data, statusMsg: response.statusMsg, errMsg: response.errMsg, loading: false })
     }
 
     render() {
         return (
             <ContentLayout>
                 <div className='search-page'>
-                        <form className='search-page__input-container'>
-                            <input className='search-page__input' 
+                    <label>Search For your favourite artist</label>
+                    <form className='search-page__input-container'>
+                        <input className='search-page__input'
                             onChange={(e) => {
                                 e.preventDefault()
-                                this.setState({ searchText: e.target.value, errMsg:'', statusMsg: ''})
+                                this.setState({ searchText: e.target.value, errMsg: '', statusMsg: '' })
                                 this.handleSearch(e.target.value)
                             }}
                             value={this.state.searchText}
-                            />
-                        
+                        />
+
                         <i className="fa fa-search search-page__icon"></i>
-                        </form>
+                    </form>
                     <div className='search-page__results'>
                         {this.state.artists.map((artist) => {
                             return (

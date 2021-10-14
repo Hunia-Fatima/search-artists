@@ -41,11 +41,11 @@ exports.getArtistByName = async function (name) {
     return {data: artist, statusMsg: statusMsg, errMsg: errMsg}
 }
 
-exports.getArtistsEvents = async function (artist) {
+exports.getArtistsEvents = async function (artist, dateRange) {
     let events = []
     let errMsg = ''
     let statusMsg = ''
-    await axios.get('/artist-events', { params: { name: artist } }).then(response => {
+    await axios.get('/artist-events', { params: { name: artist, dateRange: dateRange } }).then(response => {
         if (response.data.status == 200) {
             console.log(response.data)
             if (response.data.payload) {

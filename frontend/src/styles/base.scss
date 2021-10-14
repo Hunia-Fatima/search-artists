@@ -55,3 +55,9 @@ $bp--xxlarge: 3200px;
   }
   @media #{$query}  { @content; }
 }
+
+.react-daterange-picker__wrapper {
+  border: 1px solid $c-gray--light;
+  border-radius: 5px;
+  padding: 5px;
+}

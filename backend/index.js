@@ -9,11 +9,12 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 // port fallback to 3000 if not specified
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 // importing controllers
 var artistController = require('./server');
 
+// starting the express app
 const app = express();
 app.use(cors())
 const bodyParser = require('body-parser');

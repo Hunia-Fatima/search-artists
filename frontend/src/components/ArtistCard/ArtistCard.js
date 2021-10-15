@@ -5,29 +5,29 @@ import WhiteImage from '../../assets/white.png';
 import { ROUTES } from '../../constants';
 const { ARTIST_DETAIL } = ROUTES
 
-export default class ArtistCard extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
-
-    render() {
+// representation component for artist data
+const ArtistCard = (name, clickable, imageUrl, facebookUrl) => {
+    if (name) {
         return (
-            this.props.name?
-            <Link className={'artist-card__link'} to={this.props.clickable ? `${ARTIST_DETAIL}/${this.props.name}`: '#'}>
+            <Link className={'artist-card__link'} to={clickable ? `${ARTIST_DETAIL}/${this.props.name}` : '#'}>
                 <div className='artist-card'>
-                    <img className='artist-card__image' src={this.props.imageUrl} />
+                    <img className='artist-card__image' src={imageUrl ? this.props.imageUrl : WhiteImage} />
                     <div className='artist-card__info'>
-                        <p className='artist-card__info__name'>{this.props.name}</p>
-                        <p className='artist-card__info__fb-url'>{this.props.facebookUrl}</p>
+                        <p className='artist-card__info__name'>{name}</p>
+                        <p className='artist-card__info__fb-url'>{facebookUrl}</p>
                     </div>
                 </div>
-            </Link>:
-            !this.props.clickable && !this.props.name ? <p>Loading...</p>:
-            <p>No Artist Found Against your Search</p>
-        );
+            </Link>
+        )
+    }
+    else {
+        return (
+            !this.props.clickable && !this.props.name ? <p>Loading...</p> :
+                <p>No Artist Found Against your Search</p>
+        )
     }
 }
+
+export default ArtistCard;
 

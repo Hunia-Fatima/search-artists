@@ -1,5 +1,7 @@
 const axios = require('axios')
 
+// functions to call the backend APIs
+
 exports.getArtists = async function (searchText) {
     let artists = []
     let errMsg = ''
@@ -7,19 +9,24 @@ exports.getArtists = async function (searchText) {
     await axios.get("/artist", { params: { text: searchText } }).then(response => {
         if (response.data.status == 200) {
             if (response.data.payload) {
+                // data
                 artists.push(response.data.payload)
             }
             else {
+                // empty response
                 statusMsg = 'No artist found against your search'
             }
         }
         else {
+            // error message
             errMsg = 'Failed to Load artist'
         }
     })
+    // returning all the information
     return {data: artists, statusMsg: statusMsg, errMsg: errMsg}
 }
 
+// function to get artist and send as a single entity
 exports.getArtistByName = async function (name) {
     let artist = null
     let errMsg = ''
@@ -41,6 +48,7 @@ exports.getArtistByName = async function (name) {
     return {data: artist, statusMsg: statusMsg, errMsg: errMsg}
 }
 
+// getting artists events data
 exports.getArtistsEvents = async function (artist, dateRange) {
     let events = []
     let errMsg = ''

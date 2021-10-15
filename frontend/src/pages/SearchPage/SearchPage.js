@@ -17,6 +17,7 @@ export default class SearchPage extends Component {
         };
     }
 
+    // api call for ssearching artists
     handleSearch = async (text) => {
         this.setState({ artists: [], loading: true })
         const response = await getArtists(text)

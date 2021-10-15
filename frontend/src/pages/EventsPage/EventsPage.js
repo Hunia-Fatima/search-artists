@@ -36,6 +36,7 @@ export default class EventsPage extends Component {
         this.getEvents([startRange, endRange])
     }
 
+    // getting clicked artist data on same page (handling page refresh)
     getArtist = async () => {
         const name = this.props.match.params.artist_name
         const response = await getArtistByName(name)
@@ -49,7 +50,7 @@ export default class EventsPage extends Component {
 
     getEvents = async (dateRange) => {
         const name = this.props.match.params.artist_name
-        const options = { year: "numeric", month: "long", day: "numeric" }
+        // for start keep the Date Range default to send in API call
         let dateRangeString = 'upcoming'
         if (this.state.dateRange){
             const startDate = new Date(dateRange[0])
@@ -57,6 +58,7 @@ export default class EventsPage extends Component {
             dateRangeString = formatDateRange(startDate, endDate)
         }
         const response = await getArtistsEvents(name, dateRangeString)
+        // handling error sent in string format in response data
         if(typeof(response.data) !== 'string'){
             if (response.data.length){
                 this.setState({ events: response.data, loading: false })

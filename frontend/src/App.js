@@ -3,8 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
-  Link
+  Redirect
 } from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
 import EventsPage from './pages/EventsPage';
@@ -19,11 +18,9 @@ class App extends React.Component {
       <div>
         <Router>
           <Switch>
+            <Route path={'/'} exact render={() => <Redirect to={`${SEARCH}`} />}/>
             <Route path={`${SEARCH}`} component={SearchPage} />
-              {/* <SearchPage/> */}
-            {/* </Route> */}
             <Route path={`${ARTIST_DETAIL}/:artist_name`} component={EventsPage}/>
-              {/* <EventsPage/> */}
           </Switch>
         </Router>
       </div>

@@ -7,7 +7,7 @@ exports.getArtists = async function (searchText) {
     let errMsg = ''
     let statusMsg = ''
     await axios.get("/artist", { params: { text: searchText } }).then(response => {
-        if (response.data.status == 200) {
+        if (response.data.status === 200) {
             if (response.data.payload) {
                 // data
                 artists.push(response.data.payload)
@@ -32,7 +32,7 @@ exports.getArtistByName = async function (name) {
     let errMsg = ''
     let statusMsg = ''
     await axios.get("/artist", { params: { text: name } }).then(response => {
-        if (response.data.status == 200) {
+        if (response.data.status === 200) {
             console.log(response.data)
             if (response.data.payload) {
                 artist = response.data.payload
@@ -54,7 +54,7 @@ exports.getArtistsEvents = async function (artist, dateRange) {
     let errMsg = ''
     let statusMsg = ''
     await axios.get('/artist-events', { params: { name: artist, dateRange: dateRange } }).then(response => {
-        if (response.data.status == 200) {
+        if (response.data.status === 200) {
             console.log(response.data)
             if (response.data.payload) {
                 events = response.data.payload
